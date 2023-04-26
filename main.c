@@ -1,4 +1,5 @@
 #include "linkedList.h"
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,11 +9,18 @@ typedef struct Customer {
   int number;
   char service;
 } Customer;
+typedef struct CustomerArgs {
+  LinkedList *list;
+  int t_c;
+} CustomerArgs;
 void printCustomer(void *data) {
   Customer *customer = (Customer *)data;
   printf("%d, %c \n", customer->number, customer->service);
 }
-int customer(LinkedList *list, int t_c) {
+void *customer(void *data) {
+  CustomerArgs *args = (CustomerArgs *)data;
+  LinkedList *list = args->list;
+  int t_c = args->t_c;
   FILE *fptr;
   char line[50];
   fptr = fopen("c_file", "r");
@@ -46,10 +54,16 @@ int freeCustomer(LinkedList *list) {
   return EXIT_SUCCESS;
 }
 int main(int argc, char *argv[]) {
+  pthread_t id;
+  CustomerArgs args;
   void (*listFunc)(void *);
+  int *ptr;
   listFunc = (void *)&printCustomer;
   LinkedList *c_queue = createList();
-  customer(c_queue, 1);
+  args.list = c_queue;
+  args.t_c = 1;
+  pthread_create(&id, NULL, customer, (void *)&args);
+  pthread_join(id, (void **)&ptr);
   printList(c_queue, listFunc);
   freeCustomer(c_queue);
   freeList(c_queue);

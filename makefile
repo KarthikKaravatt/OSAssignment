@@ -1,17 +1,17 @@
 CC = gcc
 LD = gcc
-CFLAGS = -g Wall
+CFLAGS = -g 
 LFLAGS = -lm -s
 OBJ = main.o linkedList.o
 EXEC = main
 $(EXEC): $(OBJ)
-	$(LD) $(LFLAGS) $(OBJ) -o $(EXEC)
+	$(LD) $(LFLAGS) $(OBJ) -o $(EXEC) 
 
 main.o: main.c linkedList.h
-	$(CC) -c main.c
+	$(CC) -c main.c $(CFLAGS)
 
 linkedList.o: linkedList.c
-	$(CC) -c linkedList.c
+	$(CC) -c linkedList.c 
 
 clean:
 	$(RM) $(EXEC) $(OBJ)
