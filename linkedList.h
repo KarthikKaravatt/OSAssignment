@@ -12,8 +12,7 @@ typedef struct LinkedList
    int size;
 }LinkedList;
 typedef void(*listFunc)(void* data);
-typedef void(*freeFunc)(Node* node);
-LinkedList* createList();
+LinkedList* createList(void);
 void insertFirst(LinkedList* list, void* data);
 void insertLast(LinkedList* list, void* data);
 void* removeFirst(LinkedList* list);
