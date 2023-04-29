@@ -2,7 +2,7 @@
 #include "linkedList.h"
 
 typedef struct Customer {
-  int number;
+  char* number;
   char service;
 } Customer;
 
@@ -14,6 +14,8 @@ typedef struct CustomerArgs {
 
 typedef struct Teller{
     LinkedList* list;
+    char id;
+    int m;
     int t_w;
     int t_d;
     int t_i;

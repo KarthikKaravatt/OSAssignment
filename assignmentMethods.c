@@ -10,7 +10,7 @@
 
 pthread_mutex_t mutex;
 pthread_cond_t cond;
-//TODO: Terrible way of implementing this, fix later
+// TODO: Terrible way of implementing this, fix later
 int fileread = 0;
 void logTofile(char *message) {
   FILE *file;
@@ -20,16 +20,19 @@ void logTofile(char *message) {
 }
 void printCustomer(void *data) {
   Customer *customer = (Customer *)data;
-  printf("%d, %c \n", customer->number, customer->service);
+  printf("%s, %c \n", customer->number, customer->service);
 }
 void logCustomer(char *customerString, char *serviceString,
                  struct tm *timeString) {
+  char onlyTime[100];
+  sprintf(onlyTime, "%d:%d:%d\n", timeString->tm_hour, timeString->tm_min,
+          timeString->tm_sec);
   logTofile(customerString);
   logTofile(": ");
   logTofile(serviceString);
   logTofile("\n");
-  logTofile("Current Time: ");
-  logTofile(asctime(timeString));
+  logTofile("Arival Time: ");
+  logTofile(onlyTime);
   logTofile("--------------------------------------\n");
 }
 void addCustomer(LinkedList *list, char line[], int t_c) {
@@ -44,8 +47,10 @@ void addCustomer(LinkedList *list, char line[], int t_c) {
   while (splitString != NULL) {
     if (index == 0) {
       customerString = splitString;
-      customerString[strcspn(customerString, "\n")] = 0;
-      customer->number = atoi(splitString);
+      // customerString[strcspn(customerString, "\n")] = 0;
+      customer->number = malloc(strlen(customerString));
+      strcpy(customer->number, customerString);
+      customer->number = splitString;
     } else if (index == 1) {
       serviceString = splitString;
       serviceString[strcspn(serviceString, "\n")] = 0;
@@ -69,21 +74,20 @@ void *customer(void *data) {
   char line[50];
   logTofile("--------------------------------------\n");
   fptr = fopen("c_file", "r");
+  pthread_mutex_lock(&mutex);
   while (fgets(line, sizeof(line), fptr)) {
     printf("customer lock\n");
-    pthread_mutex_lock(&mutex);
     addCustomer(list, line, t_c);
-    pthread_cond_signal(&cond);
+    sleep(t_c);
     printf("customer added\n");
-    while (list->size == 2) {
+    while (list->size == m) {
       printf("queFull\n");
       pthread_cond_wait(&cond, &mutex);
     }
-    sleep(t_c);
     printf("customer unlock\n");
-    pthread_mutex_unlock(&mutex);
   }
   pthread_cond_signal(&cond);
+  pthread_mutex_unlock(&mutex);
   fclose(fptr);
   fileread = 1;
   return EXIT_SUCCESS;
@@ -94,21 +98,43 @@ int freeCustomer(LinkedList *list) {
   while (curNode != NULL) {
     Customer *customer = (Customer *)curNode->data;
     curNode = curNode->next;
+    free(customer->number);
     free(customer);
   }
   return EXIT_SUCCESS;
 }
+void logTeller(char *tellerID, char *customerID, char *arivalTime,
+               char *responseTime) {
+  logTofile("Teller: ");
+  logTofile(tellerID);
+  logTofile("\n");
+  logTofile("Customer: ");
+  logTofile(customerID);
+  logTofile("\n");
+  logTofile("Arrival time: ");
+  logTofile("\n");
+  logTofile("Response time: ");
+  logTofile("\n");
+}
 void *teller(void *data) {
+  time_t arivalTime, responseTime;
+  char *arivalString, *responseString;
+  time(&arivalTime);
+  time(&responseTime);
+  // arivalString = localtime(&arivalTime);
   Teller *teller = (Teller *)data;
   LinkedList *list = teller->list;
+  int m= teller->m;
   printf("teller lock\n");
   pthread_mutex_lock(&mutex);
   while (list->size == 0) {
-    printf("queue empty\n");
+    printf("queue empty start\n");
     pthread_cond_wait(&cond, &mutex);
   }
   while (list->size > 0) {
-    Customer *customer = (Customer *)removeFirst(list);
+    Customer *customer = (Customer*)removeFirst(list);
+    printf("%s\n", customer->number);
+    logTeller(&teller->id, customer->number, arivalString, responseString);
     pthread_cond_signal(&cond);
     printf("customer removed\n");
     switch (customer->service) {
@@ -123,7 +149,7 @@ void *teller(void *data) {
       break;
     }
     while (list->size == 0) {
-      printf("queue empty\n");
+      printf("queue empty End\n");
       if (fileread == 1) {
         break;
       }

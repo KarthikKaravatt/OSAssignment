@@ -22,8 +22,8 @@ clean:
 val:
 	valgrind --leak-check=full -s ./$(EXEC)
 run:
-	./main 2 1 2 3 4 5
+	./main 9 1 1 1 1 
 gdb:
-	gdb --args main 2 1 2 3 4 5
+	gdb --args main 2 1 1 1 1 
 
 # DO NOT DELETE
