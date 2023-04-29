@@ -8,8 +8,10 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
-  extern pthread_mutex_t mutex; 
-pthread_cond_t cond;
+  extern pthread_mutex_t writeToLog;
+  extern pthread_mutex_t listLock;
+  extern pthread_cond_t cond;
+  extern pthread_cond_t queueFull;
   int m = atoi(argv[1]);
   int t_c = atoi(argv[2]);
   int t_w = atoi(argv[3]);
@@ -19,25 +21,25 @@ pthread_cond_t cond;
   CustomerArgs args;
   Teller teller1, teller2, teller3, teller4;
   LinkedList *c_queue = createList();
-  teller1.id= '1';
+  teller1.id = "1";
   teller1.t_i = t_i;
   teller1.m = m;
   teller1.t_d = t_d;
   teller1.t_w = t_w;
   teller1.list = c_queue;
-  teller2.id= '2';
+  teller2.id = "2";
   teller2.m = m;
   teller2.t_i = t_i;
   teller2.t_d = t_d;
   teller2.t_w = t_w;
   teller2.list = c_queue;
-  teller3.id= '3';
+  teller3.id = "3";
   teller3.m = m;
   teller3.t_i = t_i;
   teller3.t_d = t_d;
   teller3.t_w = t_w;
   teller3.list = c_queue;
-  teller4.id= '4';
+  teller4.id = "4";
   teller4.m = m;
   teller4.t_i = t_i;
   teller4.t_d = t_d;
@@ -49,18 +51,24 @@ pthread_cond_t cond;
   args.list = c_queue;
   args.t_c = t_c;
   args.m = m;
-  pthread_mutex_init(&mutex,NULL); 
-  pthread_cond_init(&cond,NULL); 
+  pthread_mutex_init(&listLock, NULL);
+  pthread_mutex_init(&writeToLog, NULL);
+  pthread_cond_init(&cond, NULL);
+  pthread_cond_init(&queueFull, NULL);
   pthread_create(&id, NULL, customer, (void *)&args);
   pthread_create(&t1, NULL, teller, (void *)&teller1);
   pthread_create(&t2, NULL, teller, (void *)&teller2);
-  pthread_join(id,NULL);
-  pthread_join(t1,NULL);
-  pthread_join(t2,NULL);
+  pthread_join(id, NULL);
+  pthread_join(t1, NULL);
+  pthread_join(t2, NULL);
   printList(c_queue, listFunc);
   freeCustomer(c_queue);
   freeList(c_queue);
-  //TODO: Fix this
-  // pthread_mutex_destroy(&mutex);
+  pthread_mutex_destroy(&listLock);
+  pthread_mutex_destroy(&writeToLog);
+  pthread_cond_destroy(&cond);
+  pthread_cond_destroy(&queueFull);
+  // TODO: Fix this
+  //  pthread_mutex_destroy(&mutex);
   return EXIT_SUCCESS;
 }

@@ -20,9 +20,9 @@ clean:
 	$(RM) $(EXEC) $(OBJ)
 
 val:
-	valgrind --leak-check=full -s ./$(EXEC)
+	valgrind --leak-check=full -s ./$(EXEC) 3 1 1 1 1
 run:
-	./main 9 1 1 1 1 
+	./main 3 1 1 1 1 
 gdb:
 	gdb --args main 2 1 1 1 1 
 

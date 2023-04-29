@@ -14,7 +14,7 @@ typedef struct CustomerArgs {
 
 typedef struct Teller{
     LinkedList* list;
-    char id;
+    char* id;
     int m;
     int t_w;
     int t_d;
