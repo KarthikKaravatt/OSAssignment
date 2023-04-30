@@ -22,6 +22,7 @@ void logTofile(char *message) {
   FILE *file;
   file = fopen("r_log", "a");
   fprintf(file, "%s", message);
+  fflush(file);
   fclose(file);
 }
 void printCustomer(void *data) {
@@ -200,32 +201,32 @@ void *teller(void *data) {
       pthread_mutex_lock(&fileLock);
       pthread_mutex_lock(&listLock);
     }
+    printf("%d\n", tellersLeft);
+    if (tellersLeft == 1) {
+      char served1[100];
+      char served2[100];
+      char served3[100];
+      char served4[100];
+      printf("last teller");
+      pthread_mutex_lock(&writeToLog);
+      logTofile("Teller 1 serverd: ");
+      sprintf(served1, "%d\n", served[0]);
+      logTofile(served1);
+      logTofile("Teller 2 serverd: ");
+      sprintf(served2, "%d\n", served[1]);
+      logTofile(served2);
+      logTofile("Teller 3 serverd: ");
+      sprintf(served3, "%d\n", served[2]);
+      logTofile(served3);
+      logTofile("Teller 4 serverd: ");
+      sprintf(served4, "%d\n", served[3]);
+      logTofile(served4);
+      pthread_mutex_unlock(&writeToLog);
+    }
     pthread_mutex_unlock(&listLock);
   }
   tellersLeft--;
-  printf("%d\n", tellersLeft);
   printf("%d served by %s\n", teller->served, teller->id);
-  if (tellersLeft == 1) {
-    char served1[100];
-    char served2[100];
-    char served3[100];
-    char served4[100];
-    printf("last teller\n");
-    pthread_mutex_lock(&writeToLog);
-    logTofile("Teller 1 serverd: ");
-    sprintf(served1, "%d\n", served[0]);
-    logTofile(served1);
-    logTofile("Teller 2 serverd: ");
-    sprintf(served2, "%d\n", served[1]);
-    logTofile(served2);
-    logTofile("Teller 3 serverd: ");
-    sprintf(served3, "%d\n", served[2]);
-    logTofile(served3);
-    logTofile("Teller 4 serverd: ");
-    sprintf(served4, "%d\n", served[3]);
-    logTofile(served4);
-    pthread_mutex_unlock(&writeToLog);
-  }
   pthread_mutex_unlock(&listLock);
   pthread_mutex_unlock(&fileLock);
   printf("teller terminated\n");
