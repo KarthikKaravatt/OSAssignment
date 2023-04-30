@@ -27,7 +27,6 @@ void logTofile(char *message) {
 }
 void printCustomer(void *data) {
   Customer *customer = (Customer *)data;
-  // printf("%s, %c \n", customer->number, customer->service);
 }
 void logCustomer(char *customerString, char *serviceString, char *onlyTime) {
   logTofile("--------------------------------------\n");
@@ -83,28 +82,21 @@ void *customer(void *data) {
   char line[50];
   fptr = fopen("c_file", "r");
   while (fgets(line, sizeof(line), fptr)) {
-    printf("customer lock\n");
     pthread_mutex_lock(&listLock);
     if (list->size == m) {
-      printf("queFull\n");
       pthread_cond_signal(&cond);
       pthread_cond_wait(&queueFull, &listLock);
     }
-    printf("customer added\n");
     addCustomer(list, line, t_c);
-    printf("%d\n", list->size);
-    // pthread_cond_signal(&cond);
     pthread_mutex_unlock(&listLock);
     sleep(t_c);
     pthread_mutex_lock(&listLock);
     pthread_mutex_unlock(&listLock);
-    printf("customer unlock\n");
     pthread_cond_signal(&cond);
   }
   fclose(fptr);
   pthread_mutex_lock(&listLock);
   while (list->size != 0) {
-    printf("queue is not empty\n");
     pthread_cond_signal(&cond);
     pthread_cond_wait(&queueFull, &listLock);
   }
@@ -113,7 +105,6 @@ void *customer(void *data) {
   fileread = 1;
   pthread_mutex_unlock(&fileLock);
   pthread_cond_broadcast(&cond);
-  printf("customer terminated\n");
   return EXIT_SUCCESS;
 }
 
@@ -132,7 +123,6 @@ void *teller(void *data) {
   pthread_mutex_lock(&fileLock);
   time_t completeionT, responseT;
   struct tm *completeionString, *responseString;
-  printf("Teller lock\n");
   Teller *teller = (Teller *)data;
   LinkedList *list = teller->list;
   int m = teller->m;
@@ -140,7 +130,6 @@ void *teller(void *data) {
     pthread_mutex_unlock(&fileLock);
     pthread_mutex_lock(&listLock);
     if (list->size == 0) {
-      printf("teller wait\n");
       pthread_cond_signal(&queueFull);
       pthread_cond_wait(&cond, &listLock);
     } else {
@@ -165,19 +154,14 @@ void *teller(void *data) {
       logTofile("Response time: ");
       logTofile(responseTime);
       pthread_mutex_unlock(&writeToLog);
-      printf("Teller unlock\n");
-      printf("customer removed\n");
       switch (customer->service) {
       case 'W':
-        printf("sleeping\n");
         sleep(teller->t_w);
         break;
       case 'D':
-        printf("sleeping\n");
         sleep(teller->t_d);
         break;
       case 'I':
-        printf("sleeping\n");
         sleep(teller->t_i);
         break;
       }
@@ -201,13 +185,11 @@ void *teller(void *data) {
       pthread_mutex_lock(&fileLock);
       pthread_mutex_lock(&listLock);
     }
-    printf("%d\n", tellersLeft);
     if (tellersLeft == 1) {
       char served1[100];
       char served2[100];
       char served3[100];
       char served4[100];
-      printf("last teller");
       pthread_mutex_lock(&writeToLog);
       logTofile("Teller 1 serverd: ");
       sprintf(served1, "%d\n", served[0]);
@@ -226,9 +208,7 @@ void *teller(void *data) {
     pthread_mutex_unlock(&listLock);
   }
   tellersLeft--;
-  printf("%d served by %s\n", teller->served, teller->id);
   pthread_mutex_unlock(&listLock);
   pthread_mutex_unlock(&fileLock);
-  printf("teller terminated\n");
   return EXIT_SUCCESS;
 }
