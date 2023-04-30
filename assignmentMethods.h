@@ -4,6 +4,7 @@
 typedef struct Customer {
   char* number;
   char service;
+  char* arivalTime;
 } Customer;
 
 typedef struct CustomerArgs {
@@ -19,6 +20,7 @@ typedef struct Teller{
     int t_w;
     int t_d;
     int t_i;
+    int served;
 }Teller;
 
 void logTofile(char *message);
