@@ -1,6 +1,7 @@
 /*author Karthik Karavatt
  * StudentID 20619965 */
 /* This linked list will act like a queue*/
+// Created when doing a USP practical 
 #include "linkedList.h"
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,3 +1,5 @@
+//Name: Karthik Karavatt
+//StudentID: 20619965
 #include "assignmentMethods.h"
 #include "linkedList.h"
 #include <pthread.h>
