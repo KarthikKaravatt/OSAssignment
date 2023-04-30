@@ -8,12 +8,14 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]) {
+  //global variable from assignmentMethods.c
   extern pthread_mutex_t writeToLog;
   extern pthread_mutex_t listLock;
   extern pthread_mutex_t fileLock;
   extern pthread_cond_t cond;
   extern pthread_cond_t queueFull;
   extern pthread_cond_t continueOperation;
+  //command line arguments
   int m = atoi(argv[1]);
   int t_c = atoi(argv[2]);
   int t_w = atoi(argv[3]);
@@ -22,7 +24,11 @@ int main(int argc, char *argv[]) {
   pthread_t id, t1, t2, t3, t4;
   CustomerArgs args;
   Teller teller1, teller2, teller3, teller4;
+  //using linked list made in USP to act as a queueFull
+  //The only methods that will be used is insert last and remove first
+  //Therefore it is equivilent to a queue
   LinkedList *c_queue = createList();
+  //assigning tellers variables
   teller1.id = "1";
   teller1.t_i = t_i;
   teller1.m = m;
@@ -51,35 +57,33 @@ int main(int argc, char *argv[]) {
   teller4.t_w = t_w;
   teller4.list = c_queue;
   teller4.served = 0;
-  int *ptr;
-  void (*listFunc)(void *);
-  listFunc = (void *)&printCustomer;
+  //arguments for the customer thread
   args.list = c_queue;
   args.t_c = t_c;
   args.m = m;
+  // thread initalization
   pthread_mutex_init(&listLock, NULL);
   pthread_mutex_init(&writeToLog, NULL);
   pthread_mutex_init(&fileLock, NULL);
   pthread_cond_init(&cond, NULL);
   pthread_cond_init(&queueFull, NULL);
+  //thread creation
   pthread_create(&id, NULL, customer, (void *)&args);
   pthread_create(&t1, NULL, teller, (void *)&teller1);
   pthread_create(&t2, NULL, teller, (void *)&teller2);
   pthread_create(&t3, NULL, teller, (void *)&teller3);
   pthread_create(&t4, NULL, teller, (void *)&teller4);
+  //thread join
   pthread_join(id, NULL);
   pthread_join(t1, NULL);
   pthread_join(t2, NULL);
   pthread_join(t3, NULL);
   pthread_join(t4, NULL);
-  printList(c_queue, listFunc);
-  freeCustomer(c_queue);
+  // freeing resources
   freeList(c_queue);
   pthread_mutex_destroy(&listLock);
   pthread_mutex_destroy(&writeToLog);
   pthread_cond_destroy(&cond);
   pthread_cond_destroy(&queueFull);
-  // TODO: Fix this
-  //  pthread_mutex_destroy(&mutex);
   return EXIT_SUCCESS;
 }

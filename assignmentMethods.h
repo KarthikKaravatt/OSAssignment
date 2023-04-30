@@ -26,5 +26,4 @@ typedef struct Teller{
 void logTofile(char *message);
 void printCustomer(void *data);
 void *customer(void *data);
-int freeCustomer(LinkedList *list);
 void *teller(void* data);

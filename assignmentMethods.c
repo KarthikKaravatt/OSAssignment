@@ -9,15 +9,17 @@
 #include <time.h>
 #include <unistd.h>
 
+// Globals
 pthread_mutex_t writeToLog;
 pthread_mutex_t listLock;
 pthread_mutex_t fileLock;
 pthread_cond_t cond;
 pthread_cond_t queueFull;
 pthread_cond_t continueOperation;
-int fileread = 0;
-int served[4];
-int tellersLeft = 4;
+int fileread = 0; // Indicates if all customers have been dealt with
+int served[4]; // array holding info about how many cusomers a teller has served
+int tellersLeft = 4; // how many tellers are still running (not terminated)
+// logs a string to the log file
 void logTofile(char *message) {
   FILE *file;
   file = fopen("r_log", "a");
@@ -25,9 +27,7 @@ void logTofile(char *message) {
   fflush(file);
   fclose(file);
 }
-void printCustomer(void *data) {
-  Customer *customer = (Customer *)data;
-}
+// log some common infor about the customer
 void logCustomer(char *customerString, char *serviceString, char *onlyTime) {
   logTofile("--------------------------------------\n");
   logTofile(customerString);
@@ -38,6 +38,7 @@ void logCustomer(char *customerString, char *serviceString, char *onlyTime) {
   logTofile(onlyTime);
   logTofile("--------------------------------------\n");
 }
+// add customer from the file to the queue
 void addCustomer(LinkedList *list, char line[], int t_c) {
   time_t curTime;
   struct tm *timeString;
@@ -46,12 +47,13 @@ void addCustomer(LinkedList *list, char line[], int t_c) {
   char *splitString;
   Customer *customer = malloc(sizeof(Customer));
   int index = 0;
+  // split a line from the file into sub strings diliter is the " "
   splitString = strtok(line, " \n\0");
+  // itterate through split string
   while (splitString != NULL) {
     if (index == 0) {
       customerString = splitString;
-      // customerString[strcspn(customerString, "\n")] = 0;
-      customer->number = malloc(strlen(customerString));
+      customer->number = (char *)malloc(strlen(customerString) + 1);
       strcpy(customer->number, customerString);
     } else if (index == 1) {
       serviceString = splitString;
@@ -68,11 +70,14 @@ void addCustomer(LinkedList *list, char line[], int t_c) {
           timeString->tm_sec);
   customer->arivalTime = onlyTime;
   insertLast(list, (void *)customer);
+  // lock the opertion to write to the file
   pthread_mutex_lock(&writeToLog);
   logCustomer(customerString, serviceString, onlyTime);
+  // unlock the opertion to write to the file
   pthread_mutex_unlock(&writeToLog);
 }
 
+// customer function
 void *customer(void *data) {
   CustomerArgs *args = (CustomerArgs *)data;
   LinkedList *list = args->list;
@@ -81,44 +86,44 @@ void *customer(void *data) {
   FILE *fptr;
   char line[50];
   fptr = fopen("c_file", "r");
+  // itterates through the whole file
   while (fgets(line, sizeof(line), fptr)) {
+    // lock the access to the linked list
     pthread_mutex_lock(&listLock);
     if (list->size == m) {
+      // signals to a teller that the queue is full
       pthread_cond_signal(&cond);
+      // wiatis until the queue is empty before adding more customers
       pthread_cond_wait(&queueFull, &listLock);
     }
     addCustomer(list, line, t_c);
+    // unlock the access to the queue
     pthread_mutex_unlock(&listLock);
+    // sleeps
     sleep(t_c);
-    pthread_mutex_lock(&listLock);
-    pthread_mutex_unlock(&listLock);
+    // locks the list again
     pthread_cond_signal(&cond);
   }
   fclose(fptr);
   pthread_mutex_lock(&listLock);
+  // if the whole file has been read, customer will signal the teller until
+  // queue is empty this is so there is no dead lock between the tellers Because
+  // they are waiting for the signal from the customer
   while (list->size != 0) {
     pthread_cond_signal(&cond);
     pthread_cond_wait(&queueFull, &listLock);
   }
   pthread_mutex_unlock(&listLock);
+  // changing the file read value indicates to tellers they shoud terminate
   pthread_mutex_lock(&fileLock);
   fileread = 1;
   pthread_mutex_unlock(&fileLock);
+  // broadcast signals all tellers that they should terminate
   pthread_cond_broadcast(&cond);
   return EXIT_SUCCESS;
 }
 
-int freeCustomer(LinkedList *list) {
-  Node *curNode = list->head;
-  while (curNode != NULL) {
-    Customer *customer = (Customer *)curNode->data;
-    curNode = curNode->next;
-    free(customer->arivalTime);
-    free(customer->number);
-    free(customer);
-  }
-  return EXIT_SUCCESS;
-}
+// free all customers left in queue
 void *teller(void *data) {
   pthread_mutex_lock(&fileLock);
   time_t completeionT, responseT;
@@ -130,7 +135,9 @@ void *teller(void *data) {
     pthread_mutex_unlock(&fileLock);
     pthread_mutex_lock(&listLock);
     if (list->size == 0) {
+        // signal to the customer function that queue is empty
       pthread_cond_signal(&queueFull);
+      // wait for a signal from the customer when the queue is full
       pthread_cond_wait(&cond, &listLock);
     } else {
       Customer *customer = (Customer *)removeFirst(list);
@@ -153,6 +160,7 @@ void *teller(void *data) {
       logTofile(customer->arivalTime);
       logTofile("Response time: ");
       logTofile(responseTime);
+      // unlocks when customer is being servieced
       pthread_mutex_unlock(&writeToLog);
       switch (customer->service) {
       case 'W':
@@ -183,8 +191,13 @@ void *teller(void *data) {
       logTofile(completeionTime);
       pthread_mutex_unlock(&writeToLog);
       pthread_mutex_lock(&fileLock);
+      // locks it again 
       pthread_mutex_lock(&listLock);
+      free(customer->arivalTime);
+      free(customer->number);
+      free(customer);
     }
+    // check if the teller is the last one left
     if (tellersLeft == 1) {
       char served1[100];
       char served2[100];
@@ -207,6 +220,7 @@ void *teller(void *data) {
     }
     pthread_mutex_unlock(&listLock);
   }
+  // decremetns this value when a teller terminates 
   tellersLeft--;
   pthread_mutex_unlock(&listLock);
   pthread_mutex_unlock(&fileLock);
