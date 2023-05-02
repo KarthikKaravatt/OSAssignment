@@ -192,6 +192,7 @@ void *teller(void *data) {
       logTofile("Completion time: ");
       logTofile(completeionTime);
       pthread_mutex_unlock(&writeToLog);
+      // Acessing fileread vairable is locked now
       pthread_mutex_lock(&fileLock);
       // locks it again 
       pthread_mutex_lock(&listLock);
@@ -200,6 +201,7 @@ void *teller(void *data) {
       free(customer);
     }
     // check if the teller is the last one left
+    // list lock is still enabled here so checking tellers left is okay
     if (tellersLeft == 1) {
       char served1[100];
       char served2[100];

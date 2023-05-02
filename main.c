@@ -23,6 +23,11 @@ int main(int argc, char *argv[]) {
   int t_w = atoi(argv[3]);
   int t_d = atoi(argv[4]);
   int t_i = atoi(argv[5]);
+  // M has to be greater than 0 for the program to work
+  // Otherwise it will not make sense 
+  if(m <= 0){
+      exit(0);
+  }
   pthread_t id, t1, t2, t3, t4;
   CustomerArgs args;
   Teller teller1, teller2, teller3, teller4;
