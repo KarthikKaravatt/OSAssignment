@@ -16,7 +16,6 @@ int main(int argc, char *argv[]) {
   extern pthread_mutex_t fileLock;
   extern pthread_cond_t cond;
   extern pthread_cond_t queueFull;
-  extern pthread_cond_t continueOperation;
   //command line arguments
   int m = atoi(argv[1]);
   int t_c = atoi(argv[2]);

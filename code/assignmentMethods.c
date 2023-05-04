@@ -17,7 +17,6 @@ pthread_mutex_t listLock;
 pthread_mutex_t fileLock;
 pthread_cond_t cond;
 pthread_cond_t queueFull;
-pthread_cond_t continueOperation;
 int fileread = 0; // Indicates if all customers have been dealt with
 int served[4]; // array holding info about how many cusomers a teller has served
 int tellersLeft = 4; // how many tellers are still running (not terminated)
@@ -93,18 +92,17 @@ void *customer(void *data) {
     // lock the access to the linked list
     pthread_mutex_lock(&listLock);
     if (list->size == m) {
-      // signals to a teller that the queue is full
-      pthread_cond_signal(&cond);
       // wiatis until the queue is empty before adding more customers
       pthread_cond_wait(&queueFull, &listLock);
     }
     addCustomer(list, line, t_c);
+    //signal that customer has been added
+    pthread_cond_signal(&cond);
     // unlock the access to the queue
     pthread_mutex_unlock(&listLock);
     // sleeps
     sleep(t_c);
     // locks the list again
-    pthread_cond_signal(&cond);
   }
   fclose(fptr);
   pthread_mutex_lock(&listLock);
@@ -127,25 +125,25 @@ void *customer(void *data) {
 
 // free all customers left in queue
 void *teller(void *data) {
-  pthread_mutex_lock(&fileLock);
   time_t completeionT, responseT;
   struct tm *completeionString, *responseString;
   Teller *teller = (Teller *)data;
   LinkedList *list = teller->list;
   int m = teller->m;
+  pthread_mutex_lock(&fileLock);
   while (fileread == 0) {
     pthread_mutex_unlock(&fileLock);
     pthread_mutex_lock(&listLock);
     if (list->size == 0) {
-        // signal to the customer function that queue is empty
-      pthread_cond_signal(&queueFull);
       // wait for a signal from the customer when the queue is full
       pthread_cond_wait(&cond, &listLock);
     } else {
       Customer *customer = (Customer *)removeFirst(list);
+      // signal to the customer function that a customer has been removed  
+      pthread_cond_signal(&queueFull);
+      pthread_mutex_unlock(&listLock);
       teller->served += 1;
       served[atoi(teller->id) - 1] = teller->served;
-      pthread_mutex_unlock(&listLock);
       responseT = time(&responseT);
       responseString = localtime(&responseT);
       char responseTime[100];
