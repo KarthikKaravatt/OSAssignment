@@ -564,8 +564,6 @@ void freeList(LinkedList* list);
 
 ```
 
-makefile
-
 ```makefile
 CC = gcc
 LD = gcc
@@ -772,6 +770,49 @@ stop waiting ``pthread_cond_broadcast()`` is used. Broadcast is used as there
 may be multiple threads waiting, this will signal to all of them unlike if 
 ``pthread_cond_signal()`` is used, where it only wakes one of the teller 
 threads. After broadcast is called, all the tellers terminate.
+
+The last teller has the unique responsibility of printing the number of 
+customers served by each teller. Because of the nature of threads, any of the 
+four teller threads can be the last teller to terminate. The tellersLeft 
+variable is initialized to 4 and will be decremented by one each time a teller 
+terminates. This operation is protected by the listLock and fileLock and is 
+only done after the tellerLeft variable has been checked. This means there will
+always be situation where there is a last teller. When it is equal to 1, the 
+last teller is found and, the 
+final statemenst for the log can be written.
+
+```c
+    // check if the teller is the last one left
+    // list lock is still enabled here so checking tellers left is okay
+    if (tellersLeft == 1) {
+        ...
+        ...
+        ...
+    }
+    // decremetns this value when a teller terminates 
+    tellersLeft--;
+```
+
+Writing to the log file is also a protected function. Each time a thread want 
+to write to the r_log file, it must enable the writeToLog mutex. After which,
+it must unlock it. For example:
+
+```c
+      pthread_mutex_lock(&writeToLog);
+      logTofile("Teller 1 serverd: ");
+      sprintf(served1, "%d\n", served[0]);
+      logTofile(served1);
+      logTofile("Teller 2 serverd: ");
+      sprintf(served2, "%d\n", served[1]);
+      logTofile(served2);
+      logTofile("Teller 3 serverd: ");
+      sprintf(served3, "%d\n", served[2]);
+      logTofile(served3);
+      logTofile("Teller 4 serverd: ");
+      sprintf(served4, "%d\n", served[3]);
+      logTofile(served4);
+      pthread_mutex_unlock(&writeToLog);
+```
 
 ## Tests and inconsistencies
 
