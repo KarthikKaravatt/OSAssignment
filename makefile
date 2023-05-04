@@ -1,6 +1,6 @@
 CC = gcc
 LD = gcc
-CFLAGS = -g 
+CFLAGS = -g -pthread
 LFLAGS = -lm -s
 OBJ = main.o linkedList.o assignmentMethods.o
 EXEC = main
