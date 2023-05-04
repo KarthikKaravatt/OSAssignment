@@ -1,0 +1,1204 @@
+--------------------------------------
+1: I
+Arival Time: 13:16:19
+--------------------------------------
+Teller: 2
+Customer: 1
+Arrival time: 13:16:19
+Response time: 13:16:19
+Teller: 2
+Customer: 1
+Arrival time: 13:16:19
+Completion time: 13:16:20
+--------------------------------------
+2: W
+Arival Time: 13:16:20
+--------------------------------------
+Teller: 2
+Customer: 2
+Arrival time: 13:16:20
+Response time: 13:16:20
+--------------------------------------
+3: I
+Arival Time: 13:16:21
+--------------------------------------
+Teller: 3
+Customer: 3
+Arrival time: 13:16:21
+Response time: 13:16:21
+Teller: 2
+Customer: 2
+Arrival time: 13:16:20
+Completion time: 13:16:21
+--------------------------------------
+4: W
+Arival Time: 13:16:22
+--------------------------------------
+Teller: 4
+Customer: 4
+Arrival time: 13:16:22
+Response time: 13:16:22
+Teller: 3
+Customer: 3
+Arrival time: 13:16:21
+Completion time: 13:16:22
+Teller: 4
+Customer: 4
+Arrival time: 13:16:22
+Completion time: 13:16:23
+--------------------------------------
+5: I
+Arival Time: 13:16:23
+--------------------------------------
+Teller: 1
+Customer: 5
+Arrival time: 13:16:23
+Response time: 13:16:23
+Teller: 1
+Customer: 5
+Arrival time: 13:16:23
+Completion time: 13:16:24
+--------------------------------------
+6: I
+Arival Time: 13:16:24
+--------------------------------------
+Teller: 2
+Customer: 6
+Arrival time: 13:16:24
+Response time: 13:16:24
+Teller: 2
+Customer: 6
+Arrival time: 13:16:24
+Completion time: 13:16:25
+--------------------------------------
+7: I
+Arival Time: 13:16:25
+--------------------------------------
+Teller: 2
+Customer: 7
+Arrival time: 13:16:25
+Response time: 13:16:25
+Teller: 2
+Customer: 7
+Arrival time: 13:16:25
+Completion time: 13:16:26
+--------------------------------------
+8: I
+Arival Time: 13:16:26
+--------------------------------------
+Teller: 4
+Customer: 8
+Arrival time: 13:16:26
+Response time: 13:16:26
+Teller: 4
+Customer: 8
+Arrival time: 13:16:26
+Completion time: 13:16:27
+--------------------------------------
+9: I
+Arival Time: 13:16:27
+--------------------------------------
+Teller: 1
+Customer: 9
+Arrival time: 13:16:27
+Response time: 13:16:27
+Teller: 1
+Customer: 9
+Arrival time: 13:16:27
+Completion time: 13:16:28
+--------------------------------------
+10: D
+Arival Time: 13:16:28
+--------------------------------------
+Teller: 1
+Customer: 10
+Arrival time: 13:16:28
+Response time: 13:16:28
+Teller: 1
+Customer: 10
+Arrival time: 13:16:28
+Completion time: 13:16:29
+--------------------------------------
+11: I
+Arival Time: 13:16:29
+--------------------------------------
+Teller: 1
+Customer: 11
+Arrival time: 13:16:29
+Response time: 13:16:29
+Teller: 1
+Customer: 11
+Arrival time: 13:16:29
+Completion time: 13:16:30
+--------------------------------------
+12: I
+Arival Time: 13:16:30
+--------------------------------------
+Teller: 1
+Customer: 12
+Arrival time: 13:16:30
+Response time: 13:16:30
+Teller: 1
+Customer: 12
+Arrival time: 13:16:30
+Completion time: 13:16:31
+--------------------------------------
+13: D
+Arival Time: 13:16:31
+--------------------------------------
+Teller: 3
+Customer: 13
+Arrival time: 13:16:31
+Response time: 13:16:31
+Teller: 3
+Customer: 13
+Arrival time: 13:16:31
+Completion time: 13:16:32
+--------------------------------------
+14: W
+Arival Time: 13:16:32
+--------------------------------------
+Teller: 2
+Customer: 14
+Arrival time: 13:16:32
+Response time: 13:16:32
+Teller: 2
+Customer: 14
+Arrival time: 13:16:32
+Completion time: 13:16:33
+--------------------------------------
+15: I
+Arival Time: 13:16:33
+--------------------------------------
+Teller: 4
+Customer: 15
+Arrival time: 13:16:33
+Response time: 13:16:33
+Teller: 4
+Customer: 15
+Arrival time: 13:16:33
+Completion time: 13:16:34
+--------------------------------------
+16: I
+Arival Time: 13:16:34
+--------------------------------------
+Teller: 4
+Customer: 16
+Arrival time: 13:16:34
+Response time: 13:16:34
+Teller: 4
+Customer: 16
+Arrival time: 13:16:34
+Completion time: 13:16:35
+--------------------------------------
+17: D
+Arival Time: 13:16:35
+--------------------------------------
+Teller: 4
+Customer: 17
+Arrival time: 13:16:35
+Response time: 13:16:35
+Teller: 4
+Customer: 17
+Arrival time: 13:16:35
+Completion time: 13:16:36
+--------------------------------------
+18: I
+Arival Time: 13:16:36
+--------------------------------------
+Teller: 2
+Customer: 18
+Arrival time: 13:16:36
+Response time: 13:16:36
+--------------------------------------
+19: D
+Arival Time: 13:16:37
+--------------------------------------
+Teller: 1
+Customer: 19
+Arrival time: 13:16:37
+Response time: 13:16:37
+Teller: 2
+Customer: 18
+Arrival time: 13:16:36
+Completion time: 13:16:37
+Teller: 1
+Customer: 19
+Arrival time: 13:16:37
+Completion time: 13:16:38
+--------------------------------------
+20: W
+Arival Time: 13:16:38
+--------------------------------------
+Teller: 3
+Customer: 20
+Arrival time: 13:16:38
+Response time: 13:16:38
+--------------------------------------
+21: I
+Arival Time: 13:16:39
+--------------------------------------
+Teller: 3
+Customer: 20
+Arrival time: 13:16:38
+Completion time: 13:16:39
+Teller: 4
+Customer: 21
+Arrival time: 13:16:39
+Response time: 13:16:39
+--------------------------------------
+22: D
+Arival Time: 13:16:40
+--------------------------------------
+Teller: 4
+Customer: 21
+Arrival time: 13:16:39
+Completion time: 13:16:40
+Teller: 2
+Customer: 22
+Arrival time: 13:16:40
+Response time: 13:16:40
+Teller: 2
+Customer: 22
+Arrival time: 13:16:40
+Completion time: 13:16:41
+--------------------------------------
+23: D
+Arival Time: 13:16:41
+--------------------------------------
+Teller: 1
+Customer: 23
+Arrival time: 13:16:41
+Response time: 13:16:41
+--------------------------------------
+24: I
+Arival Time: 13:16:42
+--------------------------------------
+Teller: 3
+Customer: 24
+Arrival time: 13:16:42
+Response time: 13:16:42
+Teller: 1
+Customer: 23
+Arrival time: 13:16:41
+Completion time: 13:16:42
+Teller: 3
+Customer: 24
+Arrival time: 13:16:42
+Completion time: 13:16:43
+--------------------------------------
+25: D
+Arival Time: 13:16:43
+--------------------------------------
+Teller: 4
+Customer: 25
+Arrival time: 13:16:43
+Response time: 13:16:43
+Teller: 4
+Customer: 25
+Arrival time: 13:16:43
+Completion time: 13:16:44
+--------------------------------------
+26: W
+Arival Time: 13:16:44
+--------------------------------------
+Teller: 2
+Customer: 26
+Arrival time: 13:16:44
+Response time: 13:16:44
+Teller: 2
+Customer: 26
+Arrival time: 13:16:44
+Completion time: 13:16:45
+--------------------------------------
+27: W
+Arival Time: 13:16:45
+--------------------------------------
+Teller: 1
+Customer: 27
+Arrival time: 13:16:45
+Response time: 13:16:45
+--------------------------------------
+28: I
+Arival Time: 13:16:46
+--------------------------------------
+Teller: 1
+Customer: 27
+Arrival time: 13:16:45
+Completion time: 13:16:46
+Teller: 3
+Customer: 28
+Arrival time: 13:16:46
+Response time: 13:16:46
+--------------------------------------
+29: D
+Arival Time: 13:16:47
+--------------------------------------
+Teller: 3
+Customer: 28
+Arrival time: 13:16:46
+Completion time: 13:16:47
+Teller: 4
+Customer: 29
+Arrival time: 13:16:47
+Response time: 13:16:47
+--------------------------------------
+30: D
+Arival Time: 13:16:48
+--------------------------------------
+Teller: 2
+Customer: 30
+Arrival time: 13:16:48
+Response time: 13:16:48
+Teller: 4
+Customer: 29
+Arrival time: 13:16:47
+Completion time: 13:16:48
+Teller: 2
+Customer: 30
+Arrival time: 13:16:48
+Completion time: 13:16:49
+--------------------------------------
+31: I
+Arival Time: 13:16:49
+--------------------------------------
+Teller: 1
+Customer: 31
+Arrival time: 13:16:49
+Response time: 13:16:49
+Teller: 1
+Customer: 31
+Arrival time: 13:16:49
+Completion time: 13:16:50
+--------------------------------------
+32: I
+Arival Time: 13:16:50
+--------------------------------------
+Teller: 3
+Customer: 32
+Arrival time: 13:16:50
+Response time: 13:16:50
+Teller: 3
+Customer: 32
+Arrival time: 13:16:50
+Completion time: 13:16:51
+--------------------------------------
+33: D
+Arival Time: 13:16:51
+--------------------------------------
+Teller: 4
+Customer: 33
+Arrival time: 13:16:51
+Response time: 13:16:51
+Teller: 4
+Customer: 33
+Arrival time: 13:16:51
+Completion time: 13:16:52
+--------------------------------------
+34: I
+Arival Time: 13:16:52
+--------------------------------------
+Teller: 2
+Customer: 34
+Arrival time: 13:16:52
+Response time: 13:16:52
+Teller: 2
+Customer: 34
+Arrival time: 13:16:52
+Completion time: 13:16:53
+--------------------------------------
+35: W
+Arival Time: 13:16:53
+--------------------------------------
+Teller: 1
+Customer: 35
+Arrival time: 13:16:53
+Response time: 13:16:53
+Teller: 1
+Customer: 35
+Arrival time: 13:16:53
+Completion time: 13:16:54
+--------------------------------------
+36: D
+Arival Time: 13:16:54
+--------------------------------------
+Teller: 3
+Customer: 36
+Arrival time: 13:16:54
+Response time: 13:16:54
+Teller: 3
+Customer: 36
+Arrival time: 13:16:54
+Completion time: 13:16:55
+--------------------------------------
+37: I
+Arival Time: 13:16:55
+--------------------------------------
+Teller: 4
+Customer: 37
+Arrival time: 13:16:55
+Response time: 13:16:55
+Teller: 4
+Customer: 37
+Arrival time: 13:16:55
+Completion time: 13:16:56
+--------------------------------------
+38: I
+Arival Time: 13:16:56
+--------------------------------------
+Teller: 2
+Customer: 38
+Arrival time: 13:16:56
+Response time: 13:16:56
+Teller: 2
+Customer: 38
+Arrival time: 13:16:56
+Completion time: 13:16:57
+--------------------------------------
+39: W
+Arival Time: 13:16:57
+--------------------------------------
+Teller: 1
+Customer: 39
+Arrival time: 13:16:57
+Response time: 13:16:57
+Teller: 1
+Customer: 39
+Arrival time: 13:16:57
+Completion time: 13:16:58
+--------------------------------------
+40: I
+Arival Time: 13:16:58
+--------------------------------------
+Teller: 3
+Customer: 40
+Arrival time: 13:16:58
+Response time: 13:16:58
+Teller: 3
+Customer: 40
+Arrival time: 13:16:58
+Completion time: 13:16:59
+--------------------------------------
+41: I
+Arival Time: 13:16:59
+--------------------------------------
+Teller: 4
+Customer: 41
+Arrival time: 13:16:59
+Response time: 13:16:59
+--------------------------------------
+42: D
+Arival Time: 13:17:0
+--------------------------------------
+Teller: 4
+Customer: 41
+Arrival time: 13:16:59
+Completion time: 13:17:0
+Teller: 2
+Customer: 42
+Arrival time: 13:17:0
+Response time: 13:17:0
+--------------------------------------
+43: W
+Arival Time: 13:17:1
+--------------------------------------
+Teller: 1
+Customer: 43
+Arrival time: 13:17:1
+Response time: 13:17:1
+Teller: 2
+Customer: 42
+Arrival time: 13:17:0
+Completion time: 13:17:1
+--------------------------------------
+44: D
+Arival Time: 13:17:2
+--------------------------------------
+Teller: 1
+Customer: 43
+Arrival time: 13:17:1
+Completion time: 13:17:2
+Teller: 1
+Customer: 44
+Arrival time: 13:17:2
+Response time: 13:17:2
+--------------------------------------
+45: W
+Arival Time: 13:17:3
+--------------------------------------
+Teller: 4
+Customer: 45
+Arrival time: 13:17:3
+Response time: 13:17:3
+Teller: 1
+Customer: 44
+Arrival time: 13:17:2
+Completion time: 13:17:3
+Teller: 4
+Customer: 45
+Arrival time: 13:17:3
+Completion time: 13:17:4
+--------------------------------------
+46: D
+Arival Time: 13:17:4
+--------------------------------------
+Teller: 2
+Customer: 46
+Arrival time: 13:17:4
+Response time: 13:17:4
+Teller: 2
+Customer: 46
+Arrival time: 13:17:4
+Completion time: 13:17:5
+--------------------------------------
+47: I
+Arival Time: 13:17:5
+--------------------------------------
+Teller: 2
+Customer: 47
+Arrival time: 13:17:5
+Response time: 13:17:5
+--------------------------------------
+48: D
+Arival Time: 13:17:6
+--------------------------------------
+Teller: 2
+Customer: 47
+Arrival time: 13:17:5
+Completion time: 13:17:6
+Teller: 2
+Customer: 48
+Arrival time: 13:17:6
+Response time: 13:17:6
+Teller: 2
+Customer: 48
+Arrival time: 13:17:6
+Completion time: 13:17:7
+--------------------------------------
+49: W
+Arival Time: 13:17:7
+--------------------------------------
+Teller: 4
+Customer: 49
+Arrival time: 13:17:7
+Response time: 13:17:7
+Teller: 4
+Customer: 49
+Arrival time: 13:17:7
+Completion time: 13:17:8
+--------------------------------------
+50: W
+Arival Time: 13:17:8
+--------------------------------------
+Teller: 3
+Customer: 50
+Arrival time: 13:17:8
+Response time: 13:17:8
+Teller: 3
+Customer: 50
+Arrival time: 13:17:8
+Completion time: 13:17:9
+--------------------------------------
+51: D
+Arival Time: 13:17:9
+--------------------------------------
+Teller: 3
+Customer: 51
+Arrival time: 13:17:9
+Response time: 13:17:9
+--------------------------------------
+52: W
+Arival Time: 13:17:10
+--------------------------------------
+Teller: 3
+Customer: 51
+Arrival time: 13:17:9
+Completion time: 13:17:10
+Teller: 3
+Customer: 52
+Arrival time: 13:17:10
+Response time: 13:17:10
+--------------------------------------
+53: D
+Arival Time: 13:17:11
+--------------------------------------
+Teller: 3
+Customer: 52
+Arrival time: 13:17:10
+Completion time: 13:17:11
+Teller: 4
+Customer: 53
+Arrival time: 13:17:11
+Response time: 13:17:11
+--------------------------------------
+54: W
+Arival Time: 13:17:12
+--------------------------------------
+Teller: 4
+Customer: 53
+Arrival time: 13:17:11
+Completion time: 13:17:12
+Teller: 4
+Customer: 54
+Arrival time: 13:17:12
+Response time: 13:17:12
+Teller: 4
+Customer: 54
+Arrival time: 13:17:12
+Completion time: 13:17:13
+--------------------------------------
+55: W
+Arival Time: 13:17:13
+--------------------------------------
+Teller: 2
+Customer: 55
+Arrival time: 13:17:13
+Response time: 13:17:13
+--------------------------------------
+56: I
+Arival Time: 13:17:14
+--------------------------------------
+Teller: 3
+Customer: 56
+Arrival time: 13:17:14
+Response time: 13:17:14
+Teller: 2
+Customer: 55
+Arrival time: 13:17:13
+Completion time: 13:17:14
+--------------------------------------
+57: W
+Arival Time: 13:17:15
+--------------------------------------
+Teller: 3
+Customer: 56
+Arrival time: 13:17:14
+Completion time: 13:17:15
+Teller: 3
+Customer: 57
+Arrival time: 13:17:15
+Response time: 13:17:15
+--------------------------------------
+58: D
+Arival Time: 13:17:16
+--------------------------------------
+Teller: 4
+Customer: 58
+Arrival time: 13:17:16
+Response time: 13:17:16
+Teller: 3
+Customer: 57
+Arrival time: 13:17:15
+Completion time: 13:17:16
+Teller: 4
+Customer: 58
+Arrival time: 13:17:16
+Completion time: 13:17:17
+--------------------------------------
+59: W
+Arival Time: 13:17:17
+--------------------------------------
+Teller: 2
+Customer: 59
+Arrival time: 13:17:17
+Response time: 13:17:17
+Teller: 2
+Customer: 59
+Arrival time: 13:17:17
+Completion time: 13:17:18
+--------------------------------------
+60: I
+Arival Time: 13:17:18
+--------------------------------------
+Teller: 2
+Customer: 60
+Arrival time: 13:17:18
+Response time: 13:17:18
+--------------------------------------
+61: D
+Arival Time: 13:17:19
+--------------------------------------
+Teller: 3
+Customer: 61
+Arrival time: 13:17:19
+Response time: 13:17:19
+Teller: 2
+Customer: 60
+Arrival time: 13:17:18
+Completion time: 13:17:19
+Teller: 3
+Customer: 61
+Arrival time: 13:17:19
+Completion time: 13:17:20
+--------------------------------------
+62: D
+Arival Time: 13:17:20
+--------------------------------------
+Teller: 4
+Customer: 62
+Arrival time: 13:17:20
+Response time: 13:17:20
+--------------------------------------
+63: D
+Arival Time: 13:17:21
+--------------------------------------
+Teller: 1
+Customer: 63
+Arrival time: 13:17:21
+Response time: 13:17:21
+Teller: 4
+Customer: 62
+Arrival time: 13:17:20
+Completion time: 13:17:21
+Teller: 1
+Customer: 63
+Arrival time: 13:17:21
+Completion time: 13:17:22
+--------------------------------------
+64: D
+Arival Time: 13:17:22
+--------------------------------------
+Teller: 2
+Customer: 64
+Arrival time: 13:17:22
+Response time: 13:17:22
+--------------------------------------
+65: I
+Arival Time: 13:17:23
+--------------------------------------
+Teller: 3
+Customer: 65
+Arrival time: 13:17:23
+Response time: 13:17:23
+Teller: 2
+Customer: 64
+Arrival time: 13:17:22
+Completion time: 13:17:23
+Teller: 3
+Customer: 65
+Arrival time: 13:17:23
+Completion time: 13:17:24
+--------------------------------------
+66: I
+Arival Time: 13:17:24
+--------------------------------------
+Teller: 4
+Customer: 66
+Arrival time: 13:17:24
+Response time: 13:17:24
+Teller: 4
+Customer: 66
+Arrival time: 13:17:24
+Completion time: 13:17:25
+--------------------------------------
+67: D
+Arival Time: 13:17:25
+--------------------------------------
+Teller: 4
+Customer: 67
+Arrival time: 13:17:25
+Response time: 13:17:25
+Teller: 4
+Customer: 67
+Arrival time: 13:17:25
+Completion time: 13:17:26
+--------------------------------------
+68: D
+Arival Time: 13:17:26
+--------------------------------------
+Teller: 2
+Customer: 68
+Arrival time: 13:17:26
+Response time: 13:17:26
+Teller: 2
+Customer: 68
+Arrival time: 13:17:26
+Completion time: 13:17:27
+--------------------------------------
+69: I
+Arival Time: 13:17:27
+--------------------------------------
+Teller: 3
+Customer: 69
+Arrival time: 13:17:27
+Response time: 13:17:27
+Teller: 3
+Customer: 69
+Arrival time: 13:17:27
+Completion time: 13:17:28
+--------------------------------------
+70: I
+Arival Time: 13:17:28
+--------------------------------------
+Teller: 3
+Customer: 70
+Arrival time: 13:17:28
+Response time: 13:17:28
+--------------------------------------
+71: D
+Arival Time: 13:17:29
+--------------------------------------
+Teller: 4
+Customer: 71
+Arrival time: 13:17:29
+Response time: 13:17:29
+Teller: 3
+Customer: 70
+Arrival time: 13:17:28
+Completion time: 13:17:29
+--------------------------------------
+72: W
+Arival Time: 13:17:30
+--------------------------------------
+Teller: 2
+Customer: 72
+Arrival time: 13:17:30
+Response time: 13:17:30
+Teller: 4
+Customer: 71
+Arrival time: 13:17:29
+Completion time: 13:17:30
+Teller: 2
+Customer: 72
+Arrival time: 13:17:30
+Completion time: 13:17:31
+--------------------------------------
+73: D
+Arival Time: 13:17:31
+--------------------------------------
+Teller: 1
+Customer: 73
+Arrival time: 13:17:31
+Response time: 13:17:31
+Teller: 1
+Customer: 73
+Arrival time: 13:17:31
+Completion time: 13:17:32
+--------------------------------------
+74: I
+Arival Time: 13:17:32
+--------------------------------------
+Teller: 3
+Customer: 74
+Arrival time: 13:17:32
+Response time: 13:17:32
+Teller: 3
+Customer: 74
+Arrival time: 13:17:32
+Completion time: 13:17:33
+--------------------------------------
+75: I
+Arival Time: 13:17:33
+--------------------------------------
+Teller: 3
+Customer: 75
+Arrival time: 13:17:33
+Response time: 13:17:33
+--------------------------------------
+76: I
+Arival Time: 13:17:34
+--------------------------------------
+Teller: 3
+Customer: 75
+Arrival time: 13:17:33
+Completion time: 13:17:34
+Teller: 2
+Customer: 76
+Arrival time: 13:17:34
+Response time: 13:17:34
+--------------------------------------
+77: D
+Arival Time: 13:17:35
+--------------------------------------
+Teller: 2
+Customer: 76
+Arrival time: 13:17:34
+Completion time: 13:17:35
+Teller: 1
+Customer: 77
+Arrival time: 13:17:35
+Response time: 13:17:35
+--------------------------------------
+78: W
+Arival Time: 13:17:36
+--------------------------------------
+Teller: 1
+Customer: 77
+Arrival time: 13:17:35
+Completion time: 13:17:36
+Teller: 1
+Customer: 78
+Arrival time: 13:17:36
+Response time: 13:17:36
+Teller: 1
+Customer: 78
+Arrival time: 13:17:36
+Completion time: 13:17:37
+--------------------------------------
+79: I
+Arival Time: 13:17:37
+--------------------------------------
+Teller: 3
+Customer: 79
+Arrival time: 13:17:37
+Response time: 13:17:37
+--------------------------------------
+80: D
+Arival Time: 13:17:38
+--------------------------------------
+Teller: 3
+Customer: 79
+Arrival time: 13:17:37
+Completion time: 13:17:38
+Teller: 2
+Customer: 80
+Arrival time: 13:17:38
+Response time: 13:17:38
+--------------------------------------
+81: D
+Arival Time: 13:17:39
+--------------------------------------
+Teller: 2
+Customer: 80
+Arrival time: 13:17:38
+Completion time: 13:17:39
+Teller: 4
+Customer: 81
+Arrival time: 13:17:39
+Response time: 13:17:39
+--------------------------------------
+82: W
+Arival Time: 13:17:40
+--------------------------------------
+Teller: 1
+Customer: 82
+Arrival time: 13:17:40
+Response time: 13:17:40
+Teller: 4
+Customer: 81
+Arrival time: 13:17:39
+Completion time: 13:17:40
+Teller: 1
+Customer: 82
+Arrival time: 13:17:40
+Completion time: 13:17:41
+--------------------------------------
+83: D
+Arival Time: 13:17:41
+--------------------------------------
+Teller: 3
+Customer: 83
+Arrival time: 13:17:41
+Response time: 13:17:41
+Teller: 3
+Customer: 83
+Arrival time: 13:17:41
+Completion time: 13:17:42
+--------------------------------------
+84: W
+Arival Time: 13:17:42
+--------------------------------------
+Teller: 3
+Customer: 84
+Arrival time: 13:17:42
+Response time: 13:17:42
+--------------------------------------
+85: D
+Arival Time: 13:17:43
+--------------------------------------
+Teller: 4
+Customer: 85
+Arrival time: 13:17:43
+Response time: 13:17:43
+Teller: 3
+Customer: 84
+Arrival time: 13:17:42
+Completion time: 13:17:43
+Teller: 4
+Customer: 85
+Arrival time: 13:17:43
+Completion time: 13:17:44
+--------------------------------------
+86: W
+Arival Time: 13:17:44
+--------------------------------------
+Teller: 1
+Customer: 86
+Arrival time: 13:17:44
+Response time: 13:17:44
+Teller: 1
+Customer: 86
+Arrival time: 13:17:44
+Completion time: 13:17:45
+--------------------------------------
+87: I
+Arival Time: 13:17:45
+--------------------------------------
+Teller: 2
+Customer: 87
+Arrival time: 13:17:45
+Response time: 13:17:45
+Teller: 2
+Customer: 87
+Arrival time: 13:17:45
+Completion time: 13:17:46
+--------------------------------------
+88: I
+Arival Time: 13:17:46
+--------------------------------------
+Teller: 3
+Customer: 88
+Arrival time: 13:17:46
+Response time: 13:17:46
+--------------------------------------
+89: W
+Arival Time: 13:17:47
+--------------------------------------
+Teller: 4
+Customer: 89
+Arrival time: 13:17:47
+Response time: 13:17:47
+Teller: 3
+Customer: 88
+Arrival time: 13:17:46
+Completion time: 13:17:47
+Teller: 4
+Customer: 89
+Arrival time: 13:17:47
+Completion time: 13:17:48
+--------------------------------------
+90: D
+Arival Time: 13:17:48
+--------------------------------------
+Teller: 1
+Customer: 90
+Arrival time: 13:17:48
+Response time: 13:17:48
+--------------------------------------
+91: W
+Arival Time: 13:17:49
+--------------------------------------
+Teller: 2
+Customer: 91
+Arrival time: 13:17:49
+Response time: 13:17:49
+Teller: 1
+Customer: 90
+Arrival time: 13:17:48
+Completion time: 13:17:49
+Teller: 2
+Customer: 91
+Arrival time: 13:17:49
+Completion time: 13:17:50
+--------------------------------------
+92: D
+Arival Time: 13:17:50
+--------------------------------------
+Teller: 3
+Customer: 92
+Arrival time: 13:17:50
+Response time: 13:17:50
+Teller: 3
+Customer: 92
+Arrival time: 13:17:50
+Completion time: 13:17:51
+--------------------------------------
+93: I
+Arival Time: 13:17:51
+--------------------------------------
+Teller: 4
+Customer: 93
+Arrival time: 13:17:51
+Response time: 13:17:51
+--------------------------------------
+94: D
+Arival Time: 13:17:52
+--------------------------------------
+Teller: 4
+Customer: 93
+Arrival time: 13:17:51
+Completion time: 13:17:52
+Teller: 4
+Customer: 94
+Arrival time: 13:17:52
+Response time: 13:17:52
+Teller: 4
+Customer: 94
+Arrival time: 13:17:52
+Completion time: 13:17:53
+--------------------------------------
+95: D
+Arival Time: 13:17:53
+--------------------------------------
+Teller: 2
+Customer: 95
+Arrival time: 13:17:53
+Response time: 13:17:53
+Teller: 2
+Customer: 95
+Arrival time: 13:17:53
+Completion time: 13:17:54
+--------------------------------------
+96: I
+Arival Time: 13:17:54
+--------------------------------------
+Teller: 3
+Customer: 96
+Arrival time: 13:17:54
+Response time: 13:17:54
+--------------------------------------
+97: W
+Arival Time: 13:17:55
+--------------------------------------
+Teller: 1
+Customer: 97
+Arrival time: 13:17:55
+Response time: 13:17:55
+Teller: 3
+Customer: 96
+Arrival time: 13:17:54
+Completion time: 13:17:55
+--------------------------------------
+98: I
+Arival Time: 13:17:56
+--------------------------------------
+Teller: 4
+Customer: 98
+Arrival time: 13:17:56
+Response time: 13:17:56
+Teller: 1
+Customer: 97
+Arrival time: 13:17:55
+Completion time: 13:17:56
+--------------------------------------
+99: I
+Arival Time: 13:17:57
+--------------------------------------
+Teller: 4
+Customer: 98
+Arrival time: 13:17:56
+Completion time: 13:17:57
+Teller: 2
+Customer: 99
+Arrival time: 13:17:57
+Response time: 13:17:57
+--------------------------------------
+100: I
+Arival Time: 13:17:58
+--------------------------------------
+Teller: 3
+Customer: 100
+Arrival time: 13:17:58
+Response time: 13:17:58
+Teller: 2
+Customer: 99
+Arrival time: 13:17:57
+Completion time: 13:17:58
+Teller: 3
+Customer: 100
+Arrival time: 13:17:58
+Completion time: 13:17:59
+Teller 1 serverd: 21
+Teller 2 serverd: 27
+Teller 3 serverd: 26
+Teller 4 serverd: 26
