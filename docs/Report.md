@@ -1,13 +1,60 @@
 ---
 geometry: margin=2cm
 ---
-# Operating Systems Assignment 1 Report
+\begin{titlepage} % Suppresses headers and footers on the title page
 
-**Author**: Karthik Karavatt
+	\centering % Centre everything on the title page
+	
+	\scshape % Use small caps for all text on the title page
+	
+	\vspace*{\baselineskip} % White space at the top of the page
+	
+	%------------------------------------------------
+	%	Title
+	%------------------------------------------------
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\LARGE Operating Systems \\ Assignment 1\\} % Title
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2\baselineskip} % Whitespace after the title block
+	
+	%------------------------------------------------
+	%	Subtitle
+	%------------------------------------------------
+	
+	\vspace*{3\baselineskip} % Whitespace under the subtitle
+	
+	%------------------------------------------------
+	%	Editor(s)
+	%------------------------------------------------
+	
+	Author
+	
+	\vspace{0.5\baselineskip} % Whitespace before the editors
+	
+	{\scshape\Large Karthik Karavatt\\ 20619965\\} % Editor list
+	
+	\vspace{0.5\baselineskip} % Whitespace below the editor list
+	
+	\textit{Curtin University} % Editor affiliation
+	
+	\vfill % Whitespace between editor names and publisher logo
 
-**StudentID**: 20619965
+\end{titlepage}
 
-$\pagebreak$
+<!-- **Author**: Karthik Karavatt -->
+<!---->
+<!-- **StudentID**: 20619965 -->
+<!---->
 
 \tableofcontents
 
@@ -634,11 +681,9 @@ gdb:
 $\pagebreak$
 
 ## Synchronization Discussion
-To understand how the synchronization works, lets see what variables are being
-shared.
-
-The c_queue is the main shared variable in the program. It is shared by the
-following functions:
+To understand how the synchronization works, let's see what variables are being
+shared. The c_queue is the main-shared variable in the program. It is shared by
+the following functions:
 
 - customer
 - teller
@@ -648,24 +693,23 @@ threads need access to the c_queue.
 
 The r_log file is also a shared variable in the program. It is represented as
 the file variable in the logTofile function.
-
-This is also shared by the customer and teller functions. Therefore 5 threads
-require access to this variable.
+This is also shared by the customer and teller functions. Therefore, 5 threads
+require access to the r_log file.
 
 The fileread variable located in assignmentMethods.c is also shared among all 5
 threads. Although, only the customer thread can modify it, teller threads can
-only read it. This variable indicated when the c_file has been fully read.
+only read it. This variable indicates when the c_file has been fully read.
 
-The tellersLeft integer , is another shared variable only accessed and
+The tellersLeft integer, is another shared variable only accessed and
 modified by teller threads. It indicates how many tellers are still executing.
 
-The server array, is shared by all teller threads. This indicates the number of
+The served array, is shared by all teller threads. This indicates the number of
 customers served by each teller thread.
 
 To achieve synchronization for the c_queue, the mutex lock listLock was used.
 If a thread needed to access or modify the c_queue, the lock must be enabled
-first. Then after the use it must be unlocked. For example in the customer
-function
+first. Then after it is used, the lock must be released. For example in 
+the customer function
 
 **assignmentMethods.c, customer**
 ```c
@@ -691,7 +735,6 @@ This example also highlights another way synchronization is achieved, through
 the use of ``pthread_cond_signal()`` and ``pthread_cond_wait()``. When
 ``list->size == m`` it indicates that the c_queue is full. When this situation
 occurs, the customer thread must wait until it gets the queueFull signal.
-
 The queueFull signal is emitted by the teller thread when a customer is
 removed from the list.
 
@@ -703,9 +746,8 @@ $\pagebreak$
       // signal to the customer function that a customer has been removed
       pthread_cond_signal(&queueFull);
 ```
-When a customer is removed from the c_queue, the signal is emitted, this stops
-the customer thread from waiting and it continues execution.
-
+When a customer is removed from the c_queue, the signal will be emitted, 
+this stops the customer thread from waiting, and it continues execution.
 Similarly, the teller thread also will be put into a waiting state when the
 c_queue is full.
 
@@ -732,11 +774,9 @@ thread.
 
 When a customer is added to the c_queue, the cond signal will be emitted, which
 breaks the wait condition of the teller thread, as the queue is not empty.
-
 This prevents deadlocks from occurring as there can never be situation where
 the c_queue is both empty and full at the same time. And the size value read by
 each tread is always accurate as a mutex lock is enabled before accessing them.
-
 The list lock is also disabled before the teller operations begin so, when a
 teller thread is sleeping, other threads can access the c_queue. This improves
 the concurrency of the program.
@@ -780,10 +820,9 @@ $\pagebreak$
 
 After the fileread has been check, fileLock is opened, at the end of the while
 loop, inside it, it is locked again as fileread variable must be accessed again.
-
-But this creates a problem, where the file has been read but there are still
-customers in the queue. To solve this, conditionals in the customer thread,
-before the fileread variable is changed.
+But this creates a problem, where the file has been read, but there are still
+customers in the queue. To solve this, conditionals are used in the customer 
+thread, before the fileread variable is changed.
 
 **assignmentMethods.c, customer**
 
@@ -802,11 +841,12 @@ before the fileread variable is changed.
 ```
 When the list is not empty, the customer thread will signal to the tellers, to
 continue operations and wait for the queueFull signal from the teller. This
-will continue until, the list is empty but no customers will be added.
-Eventually, the list will be empty and now the file read vairable is set to 1.
+will continue until the list is empty, but no customers will be added.
+When the list is empty, the file read vairable is set to 1.
 At this point in time a teller thread may have broken out of the loop and
-terminated or is waiting for the queue to be filled. If it has terminated, it
-everything is fine, but if it is waiting, that's a problem. To make tellers to
+terminated or is waiting for the queue to be filled. If it has terminated, 
+everything is fine, but if it is waiting, that's a problem as the customer 
+thread has already terminated. To make tellers to
 stop waiting ``pthread_cond_broadcast()`` is used. Broadcast is used as there
 may be multiple threads waiting, this will signal to all of them unlike if
 ``pthread_cond_signal()`` is used, where it only wakes one of the teller
@@ -834,7 +874,7 @@ final statemenst for the log can be written.
     tellersLeft--;
 ```
 
-Writing to the log file is also a protected function. Each time a thread want
+Writing to the log file is also a protected function. Each time a thread wants
 to write to the r_log file, it must enable the writeToLog mutex. After which,
 it must unlock it. For example:
 
@@ -872,7 +912,7 @@ $\pagebreak$
 
 ## Tests and inconsistencies
 
-When m = 0, the program is stuck in a infinite loop, this makes sense as there
+When m = 0, the program is stuck in an infinite loop, this makes sense as there
 is no way for the customers to be added to the c_queue. To fix this issue the
 code exits at the start of execution if m is set to 0.
 
