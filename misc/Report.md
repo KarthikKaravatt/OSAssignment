@@ -69,10 +69,8 @@ $\pagebreak$
 **StudentID**: 20619965
 
 ### Structure of assignment directories
-- code
+- assignment 
     - contains all assignment code
-- docs
-    - contains documentation such as report and declaration of originality
 - misc
     - contains miscellaneous files used for the assignment
 
