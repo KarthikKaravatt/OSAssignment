@@ -8,8 +8,6 @@
 ## Structure of assignment directories 
 - code 
     - contains all assignment code 
-- docs
-    - contains documentation such as report and declaration of originality 
 - misc
     - contains miscellaneous files used for the assignment 
 
